@@ -13,7 +13,7 @@ cap = cv2.VideoCapture(tello.get_udp_video_address())
 div = 4
 
 
-try:
+try:#Jared was here
     while True:
         ret, frame = cap.read()
         if (ret):
