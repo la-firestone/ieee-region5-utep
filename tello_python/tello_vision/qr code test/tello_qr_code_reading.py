@@ -21,20 +21,21 @@ for i in range(1000):
 
     # scan qr code
     data, bbox, _ = detector.detectAndDecode(frame)
+    # data is the message , bbox is the bounding box
 
     if bbox is not None:
         if data:
             print("[+] QR Code detected, data:", data)
 
     cv2.imshow('frame', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        #cv2.imwrite("./frame.jpg", frame)
-        break
-    # display the frame
-    cv2.imshow('frame', frame)
+    # displaying frame will slow down the program only use this
+    # for visual inspect that image is even showing the QR code
 
-    # if cv2.waitKey(1) & 0XFF == ord('q'):
-    #     break
+    # this is for displaying
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+
 
 
 tello.streamoff()
