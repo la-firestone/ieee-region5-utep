@@ -89,3 +89,26 @@ def display(img):
     cv2.circle(img,(int(frameWidth/2),int(frameHeight/2)),5,(0,0,255),5)
     cv2.line(img, (0,int(frameHeight / 2) - deadZone), (frameWidth,int(frameHeight / 2) - deadZone), (255, 255, 0), 3)
     cv2.line(img, (0,int(frameHeight / 2) + deadZone), (frameWidth,int(frameHeight / 2) + deadZone), (255, 255, 0), 3)
+
+
+# SIMPLE HSV TRACKBAR USED TO ADJUST HUE & SAT VALUES - CAN BE USED FOR OBJECT TRACKING
+def HSV():
+    def empty(a):
+        pass
+
+    cv2.namedWindow("HSV")
+    cv2.resizeWindow("HSV",640,240)
+    cv2.createTrackbar("HUE Min","HSV", 19, 179, empty)
+    cv2.createTrackbar("HUE Max","HSV", 35, 179, empty)
+    cv2.createTrackbar("SAT Min","HSV", 107, 255, empty)
+    cv2.createTrackbar("SAT Max","HSV", 255, 255, empty)
+    cv2.createTrackbar("VALUE Min","HSV", 89, 255, empty)
+    cv2.createTrackbar("VALUE Max", "HSV", 255, 255, empty)
+
+    cv2.namedWindow("Parameters")
+    cv2.resizeWindow("Parameters", 640, 240)
+    cv2.createTrackbar("Threshold1", "Parameters", 166, 255, empty)
+    cv2.createTrackbar("Threshold2", "Parameters", 171, 255, empty)
+    cv2.createTrackbar("Area", "Parameters", 1750, 30000, empty)
+
+    cv2.waitKey(0)
