@@ -1,8 +1,8 @@
 from djitellopy import Tello
-import cv2
-import pandas as pd
-import pyzbar.pyzbar as pyzbar
-from time import sleep
+# import cv2
+# import pandas as pd
+# import pyzbar.pyzbar as pyzbar
+# from time import sleep
 
 ######################################
 
@@ -16,7 +16,7 @@ def run(drone):
         print("Enter Input")
         update(drone)
 
- # Run is a function that, when running, it constantly checks the updating funciton
+ # Run is a function that, when running, it constantly checks the updating function
 
 
 def update(drone):
@@ -30,6 +30,30 @@ def update(drone):
     # this will need to change the inputs in the console
     # ... to be numbers instead of strings entered
 
+# ##### MENUS #####
+# short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
+# whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
+# full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
+
+# Menu: 1.Full Menu (tab spaced), 2.Quick Menu (Just characters, no tab space)
+
+# Updated users_movement function. (Implemented arrays into list)
+def users_selections(drone):
+    user_input = input()
+    print()
+
+
+def printin_array(array, index):
+    print(array[index])
+
+
+def full_menu():
+
+    short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
+    whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
+    full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
+
+
 def users_movement(drone):
     # Wait for user input
     user_input = input("Press:  'w', 's', 't', 'b' or 'q': ")
@@ -37,12 +61,15 @@ def users_movement(drone):
     print("(Hit ENTER after to execute the action)")
     while True:
         # user_input = input("Press 'w', 's', 't', 'b' or 'q' to continue: ")
-        if user_input in ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']:
+        if user_input in ['up', 'w', 'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']:
             break
 
     # Do something do on user input
     # if user_input == '?':
-    if user_input == 'test' or user_input == 't':
+    if user_input == 'menu' or user_input == 'm':
+        print("You Pressed ' menu or m'")
+        full_menu()
+    elif user_input == 'test' or user_input == 't':
         print("You Pressed '? test or t'")
         current_power(drone)
         # drone.takeoff()
@@ -59,7 +86,7 @@ def users_movement(drone):
     elif user_input == 'hover' or user_input == 'h':
         print("You Pressed 'hover or h'")
         current_power(drone)
-        # TILT FUNCITON
+        # TILT FUNCTION
         # drone.land()
     elif user_input == 'b':
         print("You Pressed 'b'")
@@ -114,7 +141,7 @@ def current_power(drone):
     #         battery = miner5.get_battery()
     #         if battery != prev_battery and battery % 1 == 0:
     #             if battery < prev_battery:
-    #                 print(miner5.get_batery())
+    #                 print(miner5.get_battery())
     #                 cv2.putText()
     #             prev_battery = battery
     #         time.sleep(1)
