@@ -1,29 +1,28 @@
 from utils_qr import *
-import cv2
-import pyzbar.pyzbar as pyzbar
-import pandas as pd
-# from test_diagnostics import *  # ===[TESTING]===
 from test_diagnostics import run
+# import cv2
+# import pyzbar.pyzbar as pyzbar
+# import pandas as pd
+# from test_diagnostics import *  # ===[TESTING]===
 
-######### test_diagnostics ############
+
+######### start: test_diagnostics ############
 miner5 = initialize_Tello()
 
 run(miner5)
 # has 'test' button
-# 'test' is flying and scanning
-
-######### test_diagnostics ############
+# 'test' is flying and scanning(QR)
 
 
-
-######### AeroSurveillance ############
+######### end: test_diagnostics ############
 
 
 
-######### AeroSurveillance ############
+######### start: AeroSurveillance ############
 
 
 
+######### end: AeroSurveillance ############
 
 
 # while True:

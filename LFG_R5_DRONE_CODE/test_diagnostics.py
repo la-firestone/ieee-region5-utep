@@ -4,7 +4,7 @@ from djitellopy import Tello
 # import pyzbar.pyzbar as pyzbar
 # from time import sleep
 
-######################################
+##### Version 2 #####
 
 drone = Tello()
 
