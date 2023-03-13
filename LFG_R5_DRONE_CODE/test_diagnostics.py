@@ -23,37 +23,6 @@ def update(drone):
     users_movement(drone)
 
 
-# LIST OF TASKS #############
-# put user input into array
-# print array in user_input = input ("")
-# use array for 'if user_input in [array]
-    # this will need to change the inputs in the console
-    # ... to be numbers instead of strings entered
-
-# ##### MENUS #####
-# short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
-# whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
-# full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
-
-# Menu: 1.Full Menu (tab spaced), 2.Quick Menu (Just characters, no tab space)
-
-# Updated users_movement function. (Implemented arrays into list)
-def users_selections(drone):
-    user_input = input()
-    print()
-
-
-def printin_array(array, index):
-    print(array[index])
-
-
-def full_menu():
-
-    short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
-    whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
-    full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
-
-
 def users_movement(drone):
     # Wait for user input
     user_input = input("Press:  'w', 's', 't', 'b' or 'q': ")
@@ -66,15 +35,15 @@ def users_movement(drone):
 
     # Do something do on user input
     # if user_input == '?':
-    if user_input == 'menu' or user_input == 'm':
-        print("You Pressed ' menu or m'")
-        full_menu()
-    elif user_input == 'test' or user_input == 't':
+    if user_input == 'test' or user_input == 't':
         print("You Pressed '? test or t'")
         current_power(drone)
         # drone.takeoff()
         # time.wait(5)
         # drone.land()
+    # elif user_input == 'menu' or user_input == 'm':
+    #     print("You Pressed ' menu or m'")
+    #     full_menu()
     elif user_input == 'up'or user_input == 'w':
         print("You Pressed 'up or w'")
         current_power(drone)
@@ -114,7 +83,39 @@ def current_power(drone):
     while is_running:
         print("Current Power Level: " + str(drone.get_battery()) + "%")
 
+# LIST OF TASKS ##### scrapped ########
+# put user input into array
+# print array in user_input = input ("")
+# use array for 'if user_input in [array]
+    # this will need to change the inputs in the console
+    # ... to be numbers instead of strings entered
 
+# ##### MENUS #####
+# short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
+# whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
+# full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
+
+# Menu: 1.Full Menu (tab spaced), 2.Quick Menu (Just characters, no tab space)
+
+# Updated users_movement function. (Implemented arrays into list)
+
+# original placed above users_movement function
+# SCRAPPED FUNCTIONS #############
+# def users_selections(drone):
+#     user_input = input()
+#     print()
+
+
+# def printin_array(array, index):
+#     print(array[index])
+
+
+# def full_menu():
+#
+#     short_menu = ['w', 's', 'h', 't', 'b', 'q', 'm']
+#     whole_word_menu = ['up', 'land', 'hover', 'test', 'quit', 'menu']
+#     full_menu = ['up', 'w',  'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']
+# SCRAPPED FUNCTIONS #############
 # def up_n_down():
 
     ############################################################################
@@ -161,10 +162,7 @@ def current_power(drone):
     #     cv2.putText(img, text, (x, y), font, 2, (0, 0, 255), 3)
     #     return img
 
-
-
 #################################################
-# headers
 
 # import cv2
 # from djitellopy import tello

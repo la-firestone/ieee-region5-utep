@@ -1,12 +1,20 @@
 from djitellopy import Tello
 import cv2
-# from utils_qr import *
+from utils_qr import *
+from test_diagnostics import *
+# MAIN FUNCTION TO PERFORM: Fly and Scanning (synchronous), FlyBy, AeroSurveillance,
+# MAIN FUNCTIONS in use
+# run_ae()
+# update_ae()
+# aero_surveillance()
+# tello_scan_ae()
 
-# Fly and Scanning (Syncronys), FlyBy, AeroSurvalience,
 
+# MAIN CODE
 drone = Tello()
 
 is_running = True
+
 
 def run_ae(drone):
     while is_running:
@@ -17,22 +25,28 @@ def run_ae(drone):
 def update_ae(drone):
     # fly: 1. takeoff 2.
     # scan: 1. scan qr 2. put info into array 3. send info to Rover 4. go scan next qr
+    aero_surveillance(drone)
+    # drone.takeoff()
+    # drone.tello_Scan_ae(drone)
+
+
+def aero_surveillance(drone):
     drone.takeoff()
-
-    while True:
-        img = tello_Scan_QR(drone)
-        cv2.imshow('Image', img)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            drone.land()
-            break
+    tello_scan_ae(drone)
 
 
-def tello_Scan_ae(miner5):
+# def live_feed(drone):
+#     while True:
+#         img = tello_Scan_QR(drone)
+#         tello_Scan_ae(drone)
+
+
+def tello_scan_ae(miner5):
     img = miner5.get_frame_read()
     font = cv2.FONT_HERSHEY_PLAIN
     img = img.frame
-    decodedObjects = pyzbar.decode(img)
-    for obj in decodedObjects:
+    decoded_objects = pyzbar.decode(img)
+    for obj in decoded_objects:
         # print("Data", obj.data)
         cv2.putText(img, str(obj.data), (50, 50), font, 2,
                         (255, 0, 0), 3)
