@@ -1,4 +1,5 @@
 from djitellopy import Tello
+from AeroSurveillance import *  #
 # import cv2
 # import pandas as pd
 # import pyzbar.pyzbar as pyzbar
@@ -25,18 +26,18 @@ def update(drone):
 
 def users_movement(drone):
     # Wait for user input
-    user_input = input("Press:  'w', 's', 't', 'b' or 'q': ")
-    print("Or Type:  'up', 'land', 'hover', 'test', or 'quit': ")
+    user_input = input("Press:  'w', 's', 'h', 'ae', 't', 'b' or 'q': ")
+    print("Or Type:  'up', 'land', 'hover', 'aero', 'test', or 'quit': ")
     print("(Hit ENTER after to execute the action)")
     while True:
         # user_input = input("Press 'w', 's', 't', 'b' or 'q' to continue: ")
-        if user_input in ['up', 'w', 'land', 's', 'hover', 'h', 'test', 't', 'b', 'quit', 'q']:
+        if user_input in ['up', 'w', 'land', 's', 'hover', 'h', 'aero', 'ae', 'test', 't', 'b', 'quit', 'q']:
             break
 
     # Do something do on user input
     # if user_input == '?':
     if user_input == 'test' or user_input == 't':
-        print("You Pressed '? test or t'")
+        print("You Pressed '?' 'test or 't'")
         current_power(drone)
         # drone.takeoff()
         # time.wait(5)
@@ -44,16 +45,19 @@ def users_movement(drone):
     # elif user_input == 'menu' or user_input == 'm':
     #     print("You Pressed ' menu or m'")
     #     full_menu()
-    elif user_input == 'up'or user_input == 'w':
-        print("You Pressed 'up or w'")
+    elif user_input == 'aero' or user_input == 'ae':
+        print("You Pressed 'aero' or 'ae'")
+        aero_surveillance(drone)
+    elif user_input == 'up' or user_input == 'w':
+        print("You Pressed 'up' or 'w'")
         current_power(drone)
         drone.takeoff()
-    elif user_input == 'land'or user_input == 's':
-        print("You Pressed 'land or s'")
+    elif user_input == 'land' or user_input == 's':
+        print("You Pressed 'land' or 's'")
         current_power(drone)
         drone.land()
     elif user_input == 'hover' or user_input == 'h':
-        print("You Pressed 'hover or h'")
+        print("You Pressed 'hover' or 'h'")
         current_power(drone)
         # TILT FUNCTION
         # drone.land()
@@ -62,7 +66,7 @@ def users_movement(drone):
         print("Drone Battery Percentage: " + str(drone.get_battery()) + "%")
     elif user_input == 'quit' or user_input == 'q':
         # is_running = False
-        print("You pressed 'quit or q'")
+        print("You pressed 'quit' or 'q'")
         drone.land()
         current_power(drone)
         power_drained(start_battery, drone)
@@ -82,6 +86,12 @@ def power_drained(start_battery, drone):
 def current_power(drone):
     while is_running:
         print("Current Power Level: " + str(drone.get_battery()) + "%")
+        
+# def hover(drone):
+# # hover slowly from horizontal down to 45 degree lower
+# # display the level of tilt on the image
+# # display from what range does the qr code scan work at which level of degree of tilt
+
 
 # LIST OF TASKS ##### scrapped ########
 # put user input into array
